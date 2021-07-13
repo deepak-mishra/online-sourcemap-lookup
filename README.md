@@ -13,7 +13,7 @@ Install with `npm install -g online-sourcemap-lookup`, then run `online-sourcema
 Lookup of production uglified,minified,compressed,... javascript stack trace line and column number and display actual source code location.
 
 Usage: 
-	online-sourcemap-lookup <http://domain/path/to/js/file.js>:<line number>:<column number> [options]
+	online-sourcemap-lookup <https://domain/path/to/js/file.js>:<line number>:<column number> [options]
 
 valid [options]:
 	-h, --help		 Show this help message.
@@ -27,11 +27,11 @@ valid [options]:
 
 # Example output
 
-Ran the following command: `online-sourcemap-lookup http://localhost:9401/my-site/static/main.1ae303a6f8b6caf24b4e.js:1:683258 -s /project/source/code/path/ -m http://localhost:9401/my-site/static/source-maps` to get this output:
+Ran the following command: `online-sourcemap-lookup https://anyhost.com/my-site/static/main.1ae303a6f8b6caf24b4e.js:1:683258 -s /project/source/code/path/ -m http://anyhost.com/my-site/static/source-maps` to get this output:
 
 ```
 
-Downloading sourcemap file from http://localhost:9401/my-site/static/source-maps/main.1ae303a6f8b6caf24b4e.js.map
+Downloading sourcemap file from https://anyhost.com/my-site/static/source-maps/main.1ae303a6f8b6caf24b4e.js.map
 Original Position: 
 	webpack:///src/webapp/app/my-site/components/map.component.ts, Line 55:10
 

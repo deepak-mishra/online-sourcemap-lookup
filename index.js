@@ -6,7 +6,7 @@ require('colors');
 function showHelp() {
     console.log("Lookup of production uglified,minified,compressed,... javascript stack trace line and column number and display actual source code location.");
     console.log("");
-    console.log("Usage: \n\tonline-sourcemap-lookup <http://domain/path/to/js/file.js>:<line number>:<column number> [options]");
+    console.log("Usage: \n\tonline-sourcemap-lookup <https://domain/path/to/js/file.js>:<line number>:<column number> [options]");
 
     console.log("");
     console.log("valid [options]:");
@@ -57,7 +57,7 @@ if (url.indexOf('.js') === -1 || isNaN(line) || isNaN(col)) {
     process.exit(0);
 }
 
-var sourceDirectory = argv["source-path"] || "./";
+var sourceDirectory = argv["source-path"] || "";
 var linesBefore = parseInt(argv["C"] || argv["B"]) || 5;
 var linesAfter = parseInt(argv["C"] || argv["A"]) || 5;
 
@@ -73,7 +73,7 @@ function pad(str, len) {
 console.log("");
 var fs = require("fs");
 var sourceMap = require('source-map');
-var http = require("http");
+var https = require("https");
 
 url = url.split('/');
 var fileName = url.pop();
@@ -83,7 +83,7 @@ var sourceMapsLocation = argv['m'] || url.join('/');
 url = sourceMapsLocation + "/" +fileName;
 
 console.log("Downloading sourcemap file from", url);
-http.get(url, function (response) {
+https.get(url, function (response) {
     var data = '';
 
     if (response.statusMessage !== "OK") {
